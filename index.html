@@ -40,7 +40,7 @@
   }).addTo(map);
 
   // load GeoJSON from an external file
-  $.getJSON("https://raw.githubusercontent.com/sreault/studio-week4/master/rodents.geojson",function(data){
+  $.getJSON("https://raw.githubusercontent.com/maptimeBoston/leaflet-intro/gh-pages/rodents.geojson",function(data){
     // add GeoJSON layer to the map once the file is loaded
     L.geoJson(data).addTo(map);
   });
