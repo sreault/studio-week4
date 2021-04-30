@@ -7,7 +7,7 @@
   <style>
     #map{height: 100%}
   </style>
-  <link rel="stylesheet" href="style.css"/>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
 
@@ -31,6 +31,13 @@
       maxZoom: 17,
       minZoom: 9
     }).addTo(map);
+
+    // bike lanes
+  L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
+  {
+    maxZoom: 17,
+    minZoom: 9
+  }).addTo(map);
 
   // load GeoJSON from an external file
   $.getJSON("https://raw.githubusercontent.com/sreault/studio-week4/master/rodents.geojson",function(data){
