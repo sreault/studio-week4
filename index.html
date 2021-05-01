@@ -30,6 +30,10 @@
   L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png').addTo(map);
   // load GeoJSON from an external file
 
+  $.getJSON("https://raw.githubusercontent.com/maptimeBoston/leaflet-intro/gh-pages/neighborhoods.geojson",function(hoodData){
+   L.geoJson( hoodData ).addTo(map);
+ });
+
   $.getJSON("https://raw.githubusercontent.com/maptimeBoston/leaflet-intro/gh-pages/rodents.geojson",function(data){
     var ratIcon = L.icon({
     iconUrl: 'http://andywoodruff.com/maptime-leaflet/rat.png',
