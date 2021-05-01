@@ -26,14 +26,21 @@
     // initialize the map
   var map = L.map('map').setView([42.35, -71.08], 13);
 
-  // load a tile layer
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png')
-    .addTo(map);
+  // add CARTO basemap
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png').addTo(map);
   // load GeoJSON from an external file
+
   $.getJSON("https://raw.githubusercontent.com/maptimeBoston/leaflet-intro/gh-pages/rodents.geojson",function(data){
-    // add GeoJSON layer to the map once the file is loaded
-    L.geoJson(data).addTo(map);
+    var ratIcon = L.icon({
+    iconUrl: 'rat.gif',
+    iconSize: [50,40]
   });
+  L.geoJson(data  ,{
+    pointToLayer: function(feature,latlng){
+	  return L.marker(latlng,{icon: ratIcon});
+    }
+  }  ).addTo(map);
+});
 
 
 
