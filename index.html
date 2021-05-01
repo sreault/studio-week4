@@ -35,12 +35,13 @@
     iconUrl: 'rat.gif',
     iconSize: [50,40]
   });
-  L.geoJson(data  ,{
-    pointToLayer: function(feature,latlng){
-	  return L.marker(latlng,{icon: ratIcon});
-    }
-  }  ).addTo(map);
-});
+
+  pointToLayer: function(feature,latlng){
+    var marker = L.marker(latlng,{icon: raticon});
+    marker.bindPopup(feature.properties.Location + '<br/>' + feature.properties.OPEN_DT);
+    return marker;
+  }
+
 
 
 
