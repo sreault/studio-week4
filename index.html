@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script type="text/javascript" src="http://tiles.mapc.org/layers.js"></script>
   <style>
     #map{height: 100%}
   </style>
@@ -35,12 +36,9 @@
     }).addTo(map);
 
     //test tile layer
-    L.tileLayer("http://isueogtp.github.io/GISTaskSheets/Classes/mapTiles/Google.js",
-      {
-        attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
-        maxZoom: 17,
-        minZoom: 9
-      }).addTo(map);
+  var map = new L.Map(...);
+  var layer = new L.MAPCTileLayer("basemap");
+  map.addLayer(layer);
 
     // bike lanes
   L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
