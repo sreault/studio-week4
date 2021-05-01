@@ -36,9 +36,12 @@
     }).addTo(map);
 
     //test tile layer
-  var map = new L.Map(...);
-  var layer = new L.MAPCTileLayer("basemap");
-  map.addLayer(layer);
+    L.tileLayer('https://%7Bs%7D.basemaps.cartocdn.com/rastertiles/voyager_labels_under/%7Bz%7D/%7Bx%7D/%7By%7D.png',
+      {
+        attribution: 'Tiles by <a href="http://mapc.org">MAPC</a>, Data by <a href="http://mass.gov/mgis">MassGIS</a>',
+        maxZoom: 17,
+        minZoom: 9
+      }).addTo(map);
 
     // bike lanes
   L.tileLayer('http://tiles.mapc.org/trailmap-onroad/{z}/{x}/{y}.png',
