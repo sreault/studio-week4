@@ -4,24 +4,41 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.3.0/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster@1.3.0/dist/leaflet.markercluster.js"></script> <!-- reaplaces <script src="./Leaflet.markercluster-1.0.5/leaflet.markercluster.js"></script>  -->
+  <script src="./leaflet-heat.js"></script>
   <style>
     #map{height: 100%}
   </style>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
-
+  <h1>Studio 4: Mapping Rats in Boston</h1>
   <br>
   <ul>
-  	<li><a class="active" href="index.html" target="_self">Output 1</a></li>
-    <li><a href="starter.html" target="_self">Output 2</a></li>
+    <li><a  href="index.html" target="_self">How Many Rats?</a></li>
+    <li><a class='active' href="starter.html" target="_self">Rat Heatmap</a></li>
   </ul>
   <br>
   <div id="map"></div>
+  <br>
+<script>
+L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/{z}/{x}/{y}.png').addTo(map);
 
-  <script>
+  $.getJSON("https://raw.githubusercontent.com/maptimeBoston/leaflet-intro/gh-pages/rodents.geojson",function(data){
+    var locations = data.features.map(function(rat) {
+     var location = rat.geometry.coordinates.reverse();
+     location.push(0.5);
+     return location;
+   });
+
+   var heat = L.heatLayer(locations, { radius: 35 });
+   map.addLayer(heat);
+ });
+
+ </script>
 
 
-
-  </script>
 </body>
 </html>
