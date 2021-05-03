@@ -19,6 +19,7 @@
   <ul>
     <li><a  href="index.html" target="_self">How Many Rats?</a></li>
     <li><a class='active' href="starter.html" target="_self">Rat Heatmap</a></li>
+    <li><a href="googlesheets.html" target="_self">Google Sheets Map</a></li>
   </ul>
   <br>
   <div id="map"></div>
@@ -35,7 +36,9 @@ L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager_labels_under/
      return location;
    });
 
-   var heat = L.heatLayer(locations, { radius: 35 });
+   var heat = L.heatLayer(locations, {radius: 35
+
+  });
    map.addLayer(heat);
  });
 
